@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.contenedor {
+    padding: 60px 0;
+    width: 90%; 
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.titulo {
+    color: #200fbb;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/*header*/
+
+header {
+    width: 100%;
+    height: 600px;
+    background: #ad100a;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, hsla(115, 96%, 55%, 0.836), hsla(100, 83%, 20%, 0.842)), url(../Imagenes/Logo\ para\ );
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, hsla(115, 96%, 55%, 0.836), hsla(100, 83%, 20%, 0.842)), url(../Imagenes/Logo\ para\ );
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-size: cover;
+    background-attachment: fixed;para ajustar a la pantalla en caso de tener una pantalla inicial*/
+    position: relative;
+
+}
+
+nav
+{
+    font-family: 'Poppins', sans-serif;
+    text-align: right;
+    padding: 30px 50px 0 0;
+}
+
+nav > a
+{
+ color:#fff;
+ font-weight: 300;
+ text-decoration: none;
+ margin-right: 10px ;
+}
+
+nav > a:hover
+{
+ text-decoration: underline;
+}   
+header .textos-header
+{
+font-family: 'Poppins', sans-serif;
+display: flex;
+height: 430px;
+width: 100%;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+}
+.textos-header h1
+{
+font-size: 50px;
+color:#fff;
+}
+.textos-header h2
+{
+font-size: 30px;
+color:#fff;
+}
+.wave
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/*Cuadro para ingresar texto*/
+.form-register
+{
+    width: 40%;
+    background: #49df62;
+    padding: 30px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 4px;
+    font-family: 'Calibri';
+    color: #000000 ;
+    
+}
+
+.form-register h4
+{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.controls
+{
+    width: 100%;
+    background: #34664d;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #73a353;
+    font-family: 'Calibri';
+    font-size: 18px;
+}
+
+.form-register p
+{
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.form-register a
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+
+}
+
+.form-register a:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+
+.form-register .botons
+{
+  
+  text-align: center;
+  width: 90%;
+  background: #0dbd24;
+  border: none;
+  padding: 12px;
+  color:white;
+  margin-left:16px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
