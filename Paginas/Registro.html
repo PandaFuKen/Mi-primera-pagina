@@ -30,29 +30,99 @@
     </header>
     <main>
     <section class="form-register">
-        <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su nombre">
+        <input class="controls" type="text" name="nombres" id="nombre" placeholder="Ingrese su nombre">
         <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
-        <input class="controls" type="text" name="Correo" id="Correo" placeholder="Ingrese su correo">
-        <input class="controls" type="password" name="Password" id="Password" placeholder="Ingresa tu contraseña">
+        <input class="controls" type="text" name="Correo" id="correo" placeholder="Ingrese su correo">
+        <input class="controls" type="password" name="Password" id="password" placeholder="Ingresa tu contraseña">
         <div class="controls">
             <label for="Evento"></label>
-            <select class="controls" name="Evento" id="Evento" aria-placeholder="Selecciona el tipo de evento">
+            <select class="controls" name="Evento" id="tipoevento" aria-placeholder="Selecciona el tipo de evento">
                 <option selected>Selecciona alguno</option>
-                <option value="panda">Fiesta Infantil</option>
-                <option value="panda">Fiesta</option>
-                <option value="panda">Boda</option>
-                <option value="panda">Fiesta Departamental</option>
-                <option value="panda">Reunion</option>
-                <option value="panda">Picnic</option>
-                <option value="panda">XV años</option>
+                <option value="Infantil">Fiesta Infantil</option>
+                <option value="Fiesta">Fiesta</option>
+                <option value="Boda">Boda</option>
+                <option value="Departamental">Fiesta Departamental</option>
+                <option value="Reunion">Reunion</option>
+                <option value="Picnic">Picnic</option>
+                <option value="xv">XV años</option>
             </select>
         </div>
-        <input class="controls" type="text" name="Limite de personas"  id="Limite de personas" placeholder="Limite de personas">
+        <input class="controls" type="text" name="Limite de personas"  id="personas" placeholder="Limite de personas">
         <p>Estoy de acuerdo <a href="#">Terminos y condiciones</a></p>
-        <input class="botons" type="botons" value="Registrar">
+        <input class="botons" type="button" value="Registrar" id="registrarme">
         <p>¿Ya tienes cuenta?</p>
         <p><a href="login.html">Inicia Sesion</a></p>
     </section>
     </main>
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js'
+  import { getFirestore, setDoc, doc } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js'
+
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyANgxlg4adq5FVQwUJ9HR4a4CFsxBiynU0",
+    authDomain: "tea-party-bf1d8.firebaseapp.com",
+    projectId: "tea-party-bf1d8",
+    storageBucket: "tea-party-bf1d8.appspot.com",
+    messagingSenderId: "1062550964779",
+    appId: "1:1062550964779:web:443d1103c07d76b87d786e",
+    measurementId: "G-XJX0DKGJQD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth();
+  const db = getFirestore(app);
+
+
+  var boton = document.getElementById('registrarme');
+
+    boton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const apellidos = document.getElementById('apellidos').value;
+        const correo = document.getElementById('correo').value;
+        const password = document.getElementById('password').value;
+        const evento = document.getElementById('tipoevento').value;
+        const personas = document.getElementById('personas').value;
+
+        createUserWithEmailAndPassword(auth, correo, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log('Se ha registrado correctamente');
+
+                try {
+                    setDoc(doc(db, "Usuarios", user.uid), 
+                    {
+                        name: `${nombre} ${apellidos}`,
+                        evento: evento,
+                        personas: personas
+                    });
+
+                    console.log("Documento escrito correctamente");
+                } catch (e) {
+                    console.error("Error al cargar el documento", e);
+                }
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                // ..
+            });
+    });
+
+</script>
 </html>
