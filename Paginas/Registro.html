@@ -15,11 +15,12 @@
         <nav>
             <a href="../Inicio.html">Inicio</a>
             <a href="Equipo.html">Equipo</a>
-            <a href="Registro.html">Registro</a>
+            <a href="Registro.html">Nuevo Evento</a>
+            <a href="login.html">Inicia Sesion</a>
         </nav>
         <section class="textos-header">
             <h1>Empezemos de una vez</h1>
-            <h2>Inicia sesion</h2>
+            <h2>!Crea tu evento!</h2>
         </section>
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
@@ -33,10 +34,24 @@
         <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
         <input class="controls" type="text" name="Correo" id="Correo" placeholder="Ingrese su correo">
         <input class="controls" type="password" name="Password" id="Password" placeholder="Ingresa tu contraseña">
-        <input class="controls" type="text" name="Evento"  id="Evento" placeholder="Tipo de evento">
+        <div class="controls">
+            <label for="Evento"></label>
+            <select class="controls" name="Evento" id="Evento" aria-placeholder="Selecciona el tipo de evento">
+                <option selected>Selecciona alguno</option>
+                <option value="panda">Fiesta Infantil</option>
+                <option value="panda">Fiesta</option>
+                <option value="panda">Boda</option>
+                <option value="panda">Fiesta Departamental</option>
+                <option value="panda">Reunion</option>
+                <option value="panda">Picnic</option>
+                <option value="panda">XV años</option>
+            </select>
+        </div>
+        <input class="controls" type="text" name="Limite de personas"  id="Limite de personas" placeholder="Limite de personas">
         <p>Estoy de acuerdo <a href="#">Terminos y condiciones</a></p>
         <input class="botons" type="botons" value="Registrar">
-        <p><a href="">¿Ya tienes cuenta?</a></p>
+        <p>¿Ya tienes cuenta?</p>
+        <p><a href="login.html">Inicia Sesion</a></p>
     </section>
     </main>
 </body>
