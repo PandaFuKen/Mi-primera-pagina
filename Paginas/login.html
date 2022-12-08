@@ -28,8 +28,8 @@
                 </select>
             </div>
             <p>Estoy de acuerdo <a href="#">Terminos y condiciones</a></p>
-            <button class="botons" >
-                    <a href="Confirmados.html"><span class="botons">Iniciar Sesion</span></a>
+            <button class="botons" type="button" id='botonss' >
+                    <span class="botons">Iniciar Sesion</span></a>
             </button>
             <p>Si no tienes una cuenta</p>
             <p><a href="Registro.html">Registrate</a></p>
@@ -37,4 +37,49 @@
         </main>
     
 </body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js'
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyANgxlg4adq5FVQwUJ9HR4a4CFsxBiynU0",
+        authDomain: "tea-party-bf1d8.firebaseapp.com",
+        projectId: "tea-party-bf1d8",
+        storageBucket: "tea-party-bf1d8.appspot.com",
+        messagingSenderId: "1062550964779",
+        appId: "1:1062550964779:web:443d1103c07d76b87d786e",
+        measurementId: "G-XJX0DKGJQD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    var boton = document.getElementById('botonss');
+
+    boton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const correo = document.getElementById('Correo').value;
+        const password = document.getElementById('Password').value;
+
+        signInWithEmailAndPassword(auth, correo, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log('haz inciado sesión correctamnte')
+                //AQUI AGREGAR EL CODIGO PARA QUE TE REDIRECCIONE A LA PAGINA DE CONFIRMADOS
+                window.location.href = "Confirmados.html";
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+
+            });
+
+    });
+
+</script>
 </html>
